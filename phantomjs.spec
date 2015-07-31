@@ -1,11 +1,13 @@
 Name:           phantomjs
 Version:        1.9.7
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Scriptable Headless WebKit
 
 License:        BSD
 URL:            http://phantomjs.org/
 Source0:        https://github.com/ariya/phantomjs/archive/1.9.7/phantomjs-1.9.7.tar.gz
+
+Patch0:		ignore-bundled-sqlite.patch
 
 BuildRequires:  chrpath
 BuildRequires:  flex
@@ -29,6 +31,7 @@ Canvas, and SVG.
 
 %prep
 %setup -q
+%patch0 -p1
 
 
 %build
@@ -45,8 +48,8 @@ chrpath -d %{buildroot}%{_bindir}/phantomjs
 
 
 %changelog
-* Fri Jul 31 2015 Lon Hohberger <lhh@redhat.com> 1.9.7-2
-- Use system-sqlite
+* Fri Jul 31 2015 Lon Hohberger <lhh@redhat.com> 1.9.7-3
+- Use system-sqlite instead of bundled sqlite
 
 * Wed Jul 29 2015 Graeme Gillies <ggillies@redhat.com> - 1.9.7-1
 - Initial Packaging
