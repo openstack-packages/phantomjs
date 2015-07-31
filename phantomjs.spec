@@ -20,6 +20,8 @@ BuildRequires:  sqlite-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libjpeg-devel
 
+Requires: sqlite
+
 %description
 PhantomJS is a headless WebKit scriptable with a JavaScript API. It has fast and
 native support for various web standards: DOM handling, CSS selector, JSON,
@@ -30,7 +32,7 @@ Canvas, and SVG.
 
 
 %build
-./build.sh --confirm --jobs 4
+./build.sh --confirm --jobs 4 --qt-config "-system-sqlite"
 
 %install
 mkdir -p %{buildroot}%{_bindir}
@@ -43,5 +45,8 @@ chrpath -d %{buildroot}%{_bindir}/phantomjs
 
 
 %changelog
-* Wed Jul 29 2015 Graeme Gillies <ggillies@redhat.com - 1.9.7-1
+* Fri Jul 31 2015 Lon Hohberger <lhh@redhat.com> 1.9.7-2
+- Use system-sqlite
+
+* Wed Jul 29 2015 Graeme Gillies <ggillies@redhat.com> - 1.9.7-1
 - Initial Packaging
