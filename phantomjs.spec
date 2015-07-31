@@ -1,6 +1,6 @@
 Name:           phantomjs
 Version:        1.9.7
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Scriptable Headless WebKit
 
 License:        BSD
